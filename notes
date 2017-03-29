@@ -1,0 +1,5 @@
+Print between paterns via awk:
+awk '/abc/{flag=1;next}/mno/{flag=0}flag' file
+
+http://stackoverflow.com/questions/17988756/how-to-select-lines-between-two-marker-patterns-which-may-occur-multiple-times-w
+http://stackoverflow.com/questions/38972736/how-to-select-lines-between-two-patterns/38972737#38972737
