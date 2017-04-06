@@ -1,0 +1,11 @@
+{
+   "RequestInfo":{
+      "context":"HDFS Service Check",
+      "command":"HDFS_SERVICE_CHECK"
+   },
+   "Requests/resource_filters":[
+      {
+         "service_name":"HDFS"
+      }
+   ]
+}
