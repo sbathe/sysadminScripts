@@ -39,7 +39,7 @@ done
 
 # Now, convert all vidoes to audio if we have set that
 # We assume that stream 1 is the stereo stream and that is what we will copy
-if [[ $audio ]]; then
+if [ "$audio" -eq "1" ]; then
   mkdir -p "${HOME}/Music/${name}"
   for f in $(find ${outdir}/${name} -name '*.mp4'); do
      fn="$(basename $f)"
