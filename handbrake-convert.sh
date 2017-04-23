@@ -47,11 +47,3 @@ if [[ $audio ]]; then
     ffmpeg -i "${f}" -map 0:1 -c:a:1 copy "${HOME}/Music/${name}/${nn}"
   done
 fi
-
-#parse the variable using grep to get the count
-#chapter_count=$(echo $rawout | grep -Eao "\\+ title [0-9]+:" | wc -l)
-
-#for i in $(seq $count)
-#do
-#  HandBrakeCLI --input /dev/sr0 --title $i --chapters --preset "Chromecast 1080p30 Surround" --output $i.mp4
-#done
