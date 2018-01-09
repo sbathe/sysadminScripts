@@ -19,7 +19,10 @@ def get_csv_content(url):
 
 #investors = [ "Ramdev", "Raamdeo", "Jhunhunwala", "Rare Enterprises", "Sajay Bakshi", "ValueQuest", "Nirmal Jain", "Indiainfoline", "India infoline", "Kenneth Andrade", "Damani", "Dharamshi", "ValueQuest", "Brightstar", "Nirmal Bang", "Porinju Veliyath", "Nilesh Shah", "Ekansh Mittal", "Mittal Consulting", "Vijay Kedia", "Daljeet Kohli", "Dolly", "rajiv khanna", "Nalanda", "Indianivesh", "india nivesh" ]
 
-investors = [ "Ramdev", "Raamdeo", "Jhunhunwala", "Rare Enterprises", "Sajay Bakshi", "ValueQuest", "Damani", "Dharamshi", "ValueQuest", "Brightstar", "Veliyath", "Nalanda", "Indianivesh", "india nivesh", "Ekansh", "Katalyst Wealth" ]
+# CSV format:
+# "Date","Symbol","Security Name","Client Name","Buy / Sell","Quantity Traded","Trade Price / Wght. Avg. Price","Remarks"
+
+investors = [ "Ramdev", "Raamdeo", "Jhunhunwala", "Rare Enterprises", "Sajay Bakshi", "ValueQuest", "Damani", "Dharamshi", "ValueQuest", "Brightstar", "Veliyath", "Nalanda", "Indianivesh", "india nivesh", "Ekansh", "Katalyst" ]
 
 bulk = get_csv_content('https://nseindia.com/content/equities/bulk.csv')
 block = get_csv_content('https://nseindia.com/content/equities/block.csv')
