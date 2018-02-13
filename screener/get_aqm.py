@@ -23,7 +23,7 @@ driver.get("https://www.screener.in/login/")
 u = driver.find_element_by_id("id_username")
 p = driver.find_element_by_id("id_password")
 username='sbathe@gmail.com'
-pa='pa55w02d'
+pa='this_is_dummy'
 btn = driver.find_element_by_class_name("btn")
 u.send_keys(username)
 p.send_keys(pa)
