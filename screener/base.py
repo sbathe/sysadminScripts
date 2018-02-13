@@ -33,3 +33,6 @@ def login(driver, credentials):
 def get_url(driver):
     time.sleep(5)
     driver.get(url)
+
+def cleanup(driver):
+    driver.quit()
