@@ -6,11 +6,11 @@
 
 #curl -vv --cookie-jar scr-cookies -H "Referer: https://www.screener.in/" https://www.screener.in/login/
 #curl --help
-#curl -vv --user "sbathe@gmail.com:pa55w02d" -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:57.0) Gecko/20100101 Firefox/57.0" --cookie scr-cookies -H "Referer: https://www.screener.in/login/" -d '{"csrftoken": "ThkTnzW8amtOjEHSJIOM7RXWCRagWddL"}' -X POST https://www.screener.in/login/
-#curl -vv --user -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:57.0) Gecko/20100101 Firefox/57.0" --cookie scr-cookies -H "Referer: https://www.screener.in/login/" -d '{"username": "sbathe@gmail.com", "password": "pa55w02d", "csrftoken": "ThkTnzW8amtOjEHSJIOM7RXWCRagWddL"}' -X POST https://www.screener.in/login/
-#curl -vv -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:57.0) Gecko/20100101 Firefox/57.0" --cookie scr-cookies -H "Referer: https://www.screener.in/login/" -d '{"username": "sbathe@gmail.com", "password": "pa55w02d", "csrftoken": "ThkTnzW8amtOjEHSJIOM7RXWCRagWddL"}' -X POST https://www.screener.in/login/
+#curl -vv --user "user:pass" -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:57.0) Gecko/20100101 Firefox/57.0" --cookie scr-cookies -H "Referer: https://www.screener.in/login/" -d '{"csrftoken": "ThkTnzW8amtOjEHSJIOM7RXWCRagWddL"}' -X POST https://www.screener.in/login/
+#curl -vv --user -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:57.0) Gecko/20100101 Firefox/57.0" --cookie scr-cookies -H "Referer: https://www.screener.in/login/" -d '{"username": "", "password": "", "csrftoken": "ThkTnzW8amtOjEHSJIOM7RXWCRagWddL"}' -X POST https://www.screener.in/login/
+#curl -vv -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:57.0) Gecko/20100101 Firefox/57.0" --cookie scr-cookies -H "Referer: https://www.screener.in/login/" -d '{"username": "", "password": "", "csrftoken": "ThkTnzW8amtOjEHSJIOM7RXWCRagWddL"}' -X POST https://www.screener.in/login/
 #curl -vv --cookie-jar scr-cookies -H "Referer: https://www.screener.in/" https://www.screener.in/login/
-#curl -vv -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11;rv:57.0) Gecko/20100101 Firefox/57.0" --cookie scr-cookies -H "Referer:https://www.screener.in/login/" -d '{"username": "sbathe@gmail.com", "password": "pa55w02d", "csrftoken": "C27zZvbZBLthJVZGVjkDWUY3gH6XMB6c"}' -X POST https://www.screener.in/login/
+#curl -vv -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11;rv:57.0) Gecko/20100101 Firefox/57.0" --cookie scr-cookies -H "Referer:https://www.screener.in/login/" -d '{"username": "", "password": "", "csrftoken": "C27zZvbZBLthJVZGVjkDWUY3gH6XMB6c"}' -X POST https://www.screener.in/login/
 import json, time,csv
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
@@ -22,12 +22,13 @@ driver = webdriver.Firefox()
 driver.get("https://www.screener.in/login/")
 u = driver.find_element_by_id("id_username")
 p = driver.find_element_by_id("id_password")
-username='sbathe@gmail.com'
+username='dummy@gmail.com'
 pa='this_is_dummy'
-btn = driver.find_element_by_class_name("btn")
+btn = driver.find_element_by_class_name("button-primary")
 u.send_keys(username)
 p.send_keys(pa)
-btn.submit()
+#btn.submit()
+btn.click()
 time.sleep(5)
 screenurl = "https://www.screener.in/api/screens/108568/"
 #screenurl = "https://www.screener.in/api/screens/108568/?order=asc&page=1&sort=EV+to+OP"

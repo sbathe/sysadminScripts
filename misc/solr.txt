@@ -1,0 +1,33 @@
+sudo -u infra-solr -i
+keytab=/etc/security/keytabs/ambari-infra-solr.service.keytab
+kinit -kt ${keytab} $(klist -kt ${keytab}| awk '{print $NF}'|tail -1)
+
+source /etc/ambari-infra-solr/conf/infra-solr-env.sh
+
+cluster="$(hdfs getconf -confKey dfs.internal.nameservices)"
+
+## set the collection to work with
+collection="audit_logs"
+collection="hadoop_logs"
+collection="history"
+collection="ranger_audits"
+
+solr_curl_opts="&wt=json&indent=on"
+#solr_host=somehostname
+solr_host="$(hostname -f)"
+
+function solr_curl(){
+    [[ "$1" ]] || { echo "Error: Missing query" >&2; return 1; }
+    curl -sSg -u: --negotiate "http://${solr_host}:8886${1}${solr_curl_opts}${2}"
+}
+
+########################################################################
+########################################################################
+## operational commands
+########################################################################
+
+## status of collection
+solr_curl "/solr/admin/collections?action=CLUSTERSTATUS&collection=${collection}"
+
+# delete stuff older than 7 days
+solr_curl "/solr/${collection}/update/?commit=true&stream.body=<delete><query>(evtTime:[*+TO+NOW/DAY-7DAYS])</query></delete>"
