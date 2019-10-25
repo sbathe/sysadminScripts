@@ -1,0 +1,10 @@
+ats_proto=https
+ats_url="$(hdfs getconf -confKey yarn.timeline-service.webapp.${ats_proto}.address)"
+
+ats_curl="curl -sS -g -u: --negotiate -H Accept:application/json ${ats_proto}://${ats_url}"
+
+## get timestamp of 10 most recently hive queries
+${ats_curl}/ws/v1/timeline/HIVE_QUERY_ID | jq '.entities[].starttime' | head | colrm 11 | xargs -I{} date -d @{}
+
+## get timestamp of 10 most recently tez dags
+${ats_curl}/ws/v1/timeline/TEZ_DAG_ID | jq '.entities[].starttime' | head | colrm 11 | xargs -I{} date -d @{}
