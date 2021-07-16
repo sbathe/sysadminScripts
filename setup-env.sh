@@ -44,3 +44,9 @@ sudo dnf install -y libdvdcss
 sudo dnf install -y rpmfusion-nonfree-release-tainted
 
 sudo dnf install squid squidGuard
+sudo chmod u+s /usr/lib64/squid/basic_pam_auth
+sudo systemctl enable sshd
+sudo systemctl enable squid
+sudo systemctl start sshd
+sudo systemctl start squid
+
