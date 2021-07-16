@@ -37,11 +37,12 @@ EOF
 find ${HOME} -name dot-files.tar.gz -exec tar zxf {} \;
 dconf load /org/gnome/terminal/legacy/profiles:/ < ${HOME}/gnome-terminal-profiles.dconf
 
+sudo dnf install -y rpmfusion-free-release-tainted
+sudo dnf install -y rpmfusion-nonfree-release-tainted
+sudo dnf install -y libdvdcss
 sudo dnf groupupdate -y multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
 sudo dnf groupupdate -y sound-and-video
-sudo dnf install -y rpmfusion-free-release-tainted
-sudo dnf install -y libdvdcss
-sudo dnf install -y rpmfusion-nonfree-release-tainted
+sudo dnf install -y vlc mplayer
 
 sudo dnf install squid squidGuard
 sudo chmod u+s /usr/lib64/squid/basic_pam_auth
