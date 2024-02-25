@@ -1,5 +1,9 @@
 #!/bin/bash
+set -x
 audio=0
+outdir=`pwd`
+# preset="HQ 2160p60 4K HEVC Surround"
+preset="Fast 2160p60 4K HEVC"
 
 while getopts ":n:o:a" opt; do
   case $opt in
@@ -25,6 +29,7 @@ HandBrakeCLI -i /dev/sr0 -t 0 2>&1 | tee /tmp/hb-out
 
 #parse the output to get titles and chapters
 titles="$(grep -a 'scan: title' /tmp/hb-out | grep -v angle | wc -l)"
+size=
 
 #loop through titles
 for i in $(seq $titles); do
@@ -33,7 +38,7 @@ for i in $(seq $titles); do
 	for j in $(seq $chapters); do
 	  #echo "HandBrakeCLI --input /dev/sr0 --title $i --chapter $j --min-duration 60 --previews 10:1 --preset "Chromecast 1080p30 Surround" -o "${outdir}/${name}_${i}_${j}.mp4" --format av_mp4 --optimize"
     echo "Writing Title ${i} Chapter ${j} at ${outdir}/${name}/${i}_${j}.mp4..."
-	  HandBrakeCLI --input /dev/sr0 --title $i --chapter $j --min-duration 60 --previews 10:1 --preset "Chromecast 1080p30 Surround" -o "${outdir}/${name}/${i}_${j}.mp4" --format av_mp4 --optimize
+	  HandBrakeCLI --input /dev/sr0 --title $i --chapter $j --min-duration 60 --previews 10:1 --preset "$preset" -E copy:ac3 -o "${outdir}/${name}/${i}_${j}.mp4" --format av_mp4 --optimize
 	done
 done
 
